@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../models/item_model.dart';
+
+import 'loading_container.dart';
 import '../blocs/stories_provider.dart';
+import '../models/item_model.dart';
 
 class NewsListTile extends StatelessWidget {
   final int itemId;
@@ -14,7 +16,7 @@ class NewsListTile extends StatelessWidget {
       stream: bloc.items,
       builder: (context, AsyncSnapshot<Map<int, Future<ItemModel>>> snapshot) {
         if (!snapshot.hasData) {
-          return Text('Stream still loading');
+          return LoadingContainer();
         }
 
         return FutureBuilder(

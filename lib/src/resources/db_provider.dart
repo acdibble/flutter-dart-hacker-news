@@ -69,6 +69,10 @@ class DbProvider implements Cache, Source {
       conflictAlgorithm: ConflictAlgorithm.ignore,
     );
   }
+
+  Future<void> clear() {
+    return db.delete('Items');
+  }
 }
 
 final dbProvider = DbProvider();
